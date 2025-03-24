@@ -109,7 +109,7 @@ def pesquisar_paciente(nome, lista):
     return "Paciente não encontrado."
 
 # Loop principal
-while True:
+'''while True:
     opcao_primaria = mostrar_menu_principal()
 
     if opcao_primaria == "1":
@@ -148,3 +148,4 @@ while True:
 
     else:
         print("Você digitou uma opção inválida.")
+''''''
