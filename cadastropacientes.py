@@ -66,6 +66,7 @@ def peso_estimado(aj, cb, sexo, etnia, idade):
    return round(peso, 2)
 
 def cadastrar_paciente():
+
    nome = input('Digite o nome: ')
    idade = int(input('Digite a idade do paciente: '))
    sexo = input('Qual o sexo do paciente?(M/F) ').strip().upper()
@@ -100,3 +101,50 @@ def cadastrar_paciente():
       "IMC": imc      
    }
    lista_pacientes.append(cadastro_paciente)
+
+def pesquisar_paciente(nome, lista):
+    for paciente in lista:
+        if paciente.get('nome').lower() == nome:
+            return paciente
+    return "Paciente não encontrado."
+
+# Loop principal
+while True:
+    opcao_primaria = mostrar_menu_principal()
+
+    if opcao_primaria == "1":
+        while True:
+            opcao_secundaria = mostrar_menu_secundario(opcao_primaria)
+            if not processar_menu_operacoes_pessoas(opcao_secundaria, arquivo_estudante):
+                break
+
+    elif opcao_primaria == "2":
+        while True:
+            opcao_secundaria = mostrar_menu_secundario(opcao_primaria)
+            if not processar_menu_operacoes(opcao_primaria, opcao_secundaria, arquivo_disciplina):
+                break
+
+    elif opcao_primaria == "3":
+        while True:
+            opcao_secundaria = mostrar_menu_secundario(opcao_primaria)
+            if not processar_menu_operacoes(opcao_primaria, opcao_secundaria, arquivo_professores):
+                break
+
+    elif opcao_primaria == "4":
+        while True:
+            opcao_secundaria = mostrar_menu_secundario(opcao_primaria)
+            if not processar_menu_operacoes(opcao_primaria, opcao_secundaria, arquivo_turmas):
+                break
+
+    elif opcao_primaria == "5":
+        while True:
+            opcao_secundaria = mostrar_menu_secundario(opcao_primaria)
+            if not processar_menu_operacoes(opcao_primaria, opcao_secundaria, arquivo_matriculas):
+                break
+
+    elif opcao_primaria == "0":
+        print("Você pediu para sair.")
+        break
+
+    else:
+        print("Você digitou uma opção inválida.")
